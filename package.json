@@ -1,7 +1,7 @@
 {
   "name": "ia-conector",
   "version": "0.0.0",
-  "description": "It is an plugin of wordpress, for create custom field and duplicate page.",
+  "description": "Plugin de wordpress para configurar conexiones con IAs.",
   "main": "index.js",
   "scripts": {
     "v": "grep -i \"Version:\" index.php | sed 's/.*Version:[[:space:]]*//'",
