@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Generate Page AI
+Plugin Name: IA Conector
 Plugin URI: https://github.com/franciscoblancojn/ia-conector
-Description: It is an plugin of wordpress, for create custom field and duplicate page.
+Description: Plugin de conexión con múltiples IAs. Proporciona una página de configuración para conectar distintos servicios de IA (Gemini, OpenAI, etc.) y exponerlos para otros plugins.
 Version: 0.0.0
 Author: franciscoblancojn
 Author URI: https://franciscoblanco.vercel.app/
@@ -89,4 +89,7 @@ FWUUpdate::init([
 
 use franciscoblancojn\wordpress_utils\FWUSystemLog;
 
-require_once IACON_DIR . 'src/_.php';
+if (is_admin()) {
+    FWUSystemLog::init(IACON_KEY);
+    require_once IACON_DIR . 'src/_.php';
+}
