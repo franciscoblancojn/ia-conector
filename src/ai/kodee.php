@@ -130,6 +130,13 @@ class IACON_KODEE
                 } else {
                     $content = wp_json_encode($generated);
                 }
+                FWUSystemLog::add(IACON_KEY, [
+                    'type' => 'kodee_ok',
+                    'data' => [
+                        "data" => $data,
+                        "content" => $content,
+                    ],
+                ]);
 
                 return [
                     'status' => 'ok',
