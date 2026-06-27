@@ -1,7 +1,7 @@
 {
   "name": "ia-conector",
   "version": "0.0.0",
-  "description": "Plugin de wordpress para configurar conexiones con IAs.",
+  "description": "Plugin de conexión con múltiples IAs para WordPress.",
   "main": "index.js",
   "scripts": {
     "v": "grep -i \"Version:\" index.php | sed 's/.*Version:[[:space:]]*//'",
@@ -28,10 +28,7 @@
     "type": "git",
     "url": "git+https://github.com/franciscoblancojn/ia-conector.git"
   },
-  "keywords": [
-    "aveonline",
-    "shipping"
-  ],
+  "keywords": ["ia", "wordpress", "gemini", "ai"],
   "author": "franciscoblancojn",
   "license": "ISC",
   "bugs": {

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "username": "developer",
+  "instructions": ["AGENTS.md", "CONTEXT.md"],
+  "agent": {
+    "ia-conector-dev": {
+      "description": "WordPress plugin developer especializado en IA Conector. Usa este agente cuando trabajes en funcionalidades del plugin IA Conector.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "git diff *": "allow",
+          "git log *": "allow",
+          "git status": "allow",
+          "npm *": "allow",
+          "*": "ask"
+        }
+      }
+    },
+    "ia-conector-reviewer": {
+      "description": "Revisor de código que valida que los cambios cumplan las reglas del plugin IA Conector y WordPress Coding Standards.",
+      "mode": "subagent",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git diff *": "allow",
+          "git log *": "allow",
+          "git status": "allow",
+          "*": "deny"
+        }
+      }
+    }
+  },
+  "skills": {
+    "paths": [".rules"]
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "git *": "allow",
+      "npm *": "allow",
+      "composer *": "allow",
+      "wp *": "ask",
+      "*": "ask"
+    }
+  }
+}
