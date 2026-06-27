@@ -3,7 +3,7 @@
 Plugin Name: IA Conector
 Plugin URI: https://github.com/franciscoblancojn/ia-conector
 Description: Plugin de conexión con múltiples IAs. Proporciona una página de configuración para conectar distintos servicios de IA (Gemini, OpenAI, etc.) y exponerlos para otros plugins.
-Version: 1.0.0
+Version: 1.1.0
 Author: franciscoblancojn
 Author URI: https://franciscoblanco.vercel.app/
 License: GPL2+
