@@ -57,7 +57,7 @@ class IACON_KODEE
         return $_SERVER['HTTP_HOST'] ?? '';
     }
 
-    public static function sendPrompt($PROMPT)
+    public static function sendPrompt($PROMPT, $config = array())
     {
         if (!self::isAvailable()) {
             $error = [
@@ -85,14 +85,17 @@ class IACON_KODEE
         }
 
         try {
+            $defaults = array(
+                'post_type' => 'blog_post',
+                'tone' => 'neutral',
+                'length' => '600-1200',
+                'focus_keyword' => '',
+            );
+            $params = array_merge($defaults, $config);
+            $params['description'] = $PROMPT;
+
             $url = add_query_arg(
-                [
-                    'post_type' => 'blog_post',
-                    'tone' => 'neutral',
-                    'length' => '600-1200',
-                    'description' => $PROMPT,
-                    'focus_keyword' => '',
-                ],
+                $params,
                 'https://rest-hosting.hostinger.com/v3/wordpress/plugin/generate-content'
             );
 
