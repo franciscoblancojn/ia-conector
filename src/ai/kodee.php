@@ -11,10 +11,38 @@ class IACON_KODEE
 
     private static function getApiToken()
     {
+        if (defined('HOSTINGER_AI_ASSISTANT_WP_AI_TOKEN') && file_exists(HOSTINGER_AI_ASSISTANT_WP_AI_TOKEN)) {
+            $token = trim(file_get_contents(HOSTINGER_AI_ASSISTANT_WP_AI_TOKEN));
+            if (!empty($token)) {
+                return $token;
+            }
+        }
+
+        if (method_exists('Hostinger_Ai_Assistant_Helper', 'get_api_token')) {
+            $token = Hostinger_Ai_Assistant_Helper::get_api_token();
+            if (!empty($token)) {
+                return $token;
+            }
+        }
+
+        $path = explode('/', WP_PLUGIN_DIR . '/hostinger-ai-assistant/hostinger-ai-assistant.php');
+        if (isset($path[1], $path[2])) {
+            $serverRootPath = '/' . $path[1] . '/' . $path[2];
+            $tokenPath = $serverRootPath . '/.api_token';
+            if (file_exists($tokenPath)) {
+                $token = trim(file_get_contents($tokenPath));
+                if (!empty($token)) {
+                    return $token;
+                }
+            }
+        }
+
         $paths = [
             ABSPATH . '.api_token',
             dirname(ABSPATH) . '/.api_token',
+            dirname(dirname(ABSPATH)) . '/.api_token',
             $_SERVER['DOCUMENT_ROOT'] . '/.api_token',
+            dirname($_SERVER['DOCUMENT_ROOT']) . '/.api_token',
         ];
 
         foreach ($paths as $path) {
@@ -31,6 +59,12 @@ class IACON_KODEE
 
     private static function getDomain()
     {
+        if (method_exists('Hostinger_Ai_Assistant_Helper', 'get_host_info')) {
+            $domain = Hostinger_Ai_Assistant_Helper::get_host_info();
+            if (!empty($domain)) {
+                return $domain;
+            }
+        }
         return $_SERVER['HTTP_HOST'] ?? '';
     }
 
