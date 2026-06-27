@@ -133,7 +133,7 @@ class IACON_KODEE
                 FWUSystemLog::add(IACON_KEY, [
                     'type' => 'kodee_ok',
                     'data' => [
-                        "data" => $data,
+                        "PROMPT" => $PROMPT,
                         "content" => $content,
                     ],
                 ]);

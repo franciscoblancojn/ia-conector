@@ -1,6 +1,6 @@
 {
   "name": "ia-conector",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Plugin de conexión con múltiples IAs para WordPress.",
   "main": "index.js",
   "scripts": {
