@@ -43,11 +43,14 @@ $kodee = $CONFIG['kodee'] ?? [];
         </tr>
     </table>
 
-    <div class="notice notice-info inline">
+    <div class="notice <?= IACON_KODEE::isAvailable() ? 'notice-success' : 'notice-warning' ?> inline">
         <p>
             <strong>Hostinger Kodee</strong> es el asistente de IA integrado en el ecosistema Hostinger.
-            Está disponible automáticamente en entornos Hostinger y no requiere configuración adicional.
-            Actívalo para que otros plugins puedan usarlo.
+            <?php if (IACON_KODEE::isAvailable()): ?>
+                El plugin <strong>hostinger-ai-assistant</strong> está activo.
+            <?php else: ?>
+                El plugin <strong>hostinger-ai-assistant</strong> no está activo. Instálalo y actívalo para usar Kodee.
+            <?php endif; ?>
         </p>
     </div>
 

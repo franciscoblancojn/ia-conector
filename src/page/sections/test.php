@@ -29,6 +29,13 @@ if (isset($_POST['save']) && $_POST['save'] == 'test') {
         } else {
             $resultado = 'Error: ' . ($response['message'] ?? 'Error desconocido');
         }
+    } elseif ($ia === 'kodee') {
+        $response = IACON_KODEE::sendPrompt($prompt);
+        if ($response['status'] === 'ok') {
+            $resultado = $response['data'];
+        } else {
+            $resultado = 'Error: ' . ($response['message'] ?? 'Error desconocido');
+        }
     } else {
         $resultado = 'IA no configurada: ' . $ia;
     }
