@@ -18,21 +18,16 @@ class IACON_KODEE
             }
         }
 
-        if (method_exists('Hostinger_Ai_Assistant_Helper', 'get_api_token')) {
-            $token = Hostinger_Ai_Assistant_Helper::get_api_token();
-            if (!empty($token)) {
-                return $token;
-            }
-        }
-
-        $path = explode('/', WP_PLUGIN_DIR . '/hostinger-ai-assistant/hostinger-ai-assistant.php');
-        if (isset($path[1], $path[2])) {
-            $serverRootPath = '/' . $path[1] . '/' . $path[2];
-            $tokenPath = $serverRootPath . '/.api_token';
-            if (file_exists($tokenPath)) {
-                $token = trim(file_get_contents($tokenPath));
-                if (!empty($token)) {
-                    return $token;
+        if (defined('IACON_DIR')) {
+            $parts = explode('/', IACON_DIR);
+            if (isset($parts[1], $parts[2])) {
+                $serverRootPath = '/' . $parts[1] . '/' . $parts[2];
+                $tokenPath = $serverRootPath . '/.api_token';
+                if (file_exists($tokenPath)) {
+                    $token = trim(file_get_contents($tokenPath));
+                    if (!empty($token)) {
+                        return $token;
+                    }
                 }
             }
         }
@@ -59,12 +54,6 @@ class IACON_KODEE
 
     private static function getDomain()
     {
-        if (method_exists('Hostinger_Ai_Assistant_Helper', 'get_host_info')) {
-            $domain = Hostinger_Ai_Assistant_Helper::get_host_info();
-            if (!empty($domain)) {
-                return $domain;
-            }
-        }
         return $_SERVER['HTTP_HOST'] ?? '';
     }
 
