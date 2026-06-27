@@ -1,6 +1,6 @@
 # IA Conector
 
-**Version:** 0.0.0 | **License:** GPLv2+
+**Version:** 1.0.0 | **License:** GPLv2+
 
 Plugin de WordPress que proporciona una página de configuración centralizada para conectar distintos servicios de inteligencia artificial y exponerlos para que otros plugins puedan utilizarlos.
 
