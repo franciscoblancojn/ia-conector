@@ -4,8 +4,11 @@ use franciscoblancojn\wordpress_utils\FWURespond;
 use franciscoblancojn\wordpress_utils\FWUSystemLog;
 
 $ais = [];
-if (!empty($CONFIG['gemini']['apikey'])) {
+if (!empty($CONFIG['gemini']['apikey']) && ($CONFIG['gemini']['enabled'] ?? false)) {
     $ais[] = ['key' => 'gemini', 'title' => 'Gemini'];
+}
+if ($CONFIG['kodee']['enabled'] ?? false) {
+    $ais[] = ['key' => 'kodee', 'title' => 'Hostinger Kodee'];
 }
 
 $resultado = '';

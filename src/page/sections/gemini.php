@@ -11,6 +11,7 @@ if (isset($_POST['save']) && $_POST['save'] == 'gemini') {
     ]);
 
     $gemini = $CONFIG['gemini'] ?? [];
+    $gemini['enabled'] = isset($_POST['enabled']);
     $gemini['apikey'] = sanitize_text_field($_POST['apikey'] ?? '');
     if (isset($_POST['modelo'])) {
         $gemini['modelo'] = sanitize_text_field($_POST['modelo']);
@@ -34,6 +35,22 @@ $gemini = $CONFIG['gemini'] ?? [];
     <?php FWURespond::render($respond ?? null) ?>
     <input type="hidden" name="save" value="gemini">
     <table class="form-table">
+        <tr>
+            <th scope="row">
+                <?php FWUTooltip::render('Activar', 'Activa o desactiva Gemini para que esté disponible para otros plugins.') ?>
+            </th>
+            <td>
+                <input
+                    type="checkbox"
+                    id="enabled"
+                    name="enabled"
+                    <?= ($gemini['enabled'] ?? false) ? 'checked' : '' ?>
+                    class="regular-text" />
+                <label for="enabled">
+                    Gemini activado
+                </label>
+            </td>
+        </tr>
         <tr>
             <th scope="row">
                 <?php FWUTooltip::render('API Key', 'API key de Gemini para generar contenido con IA.') ?>

@@ -12,6 +12,10 @@ $TAGS = [
         'key' => 'gemini',
         'title' => 'Gemini',
     ],
+    [
+        'key' => 'kodee',
+        'title' => 'Hostinger Kodee',
+    ],
 ];
 $defaultTag = $TAGS[0]['key'];
 
